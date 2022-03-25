@@ -2,7 +2,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 import Todos from "./components/Todos";
 import AddTodo from "./components/AddTodo";
-import EditTodo from "./components/AddTodo";
+import EditTodo from "./components/EditTodo";
 
 function App() {
   return (
