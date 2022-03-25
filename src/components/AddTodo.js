@@ -15,7 +15,8 @@ const AddTodo = () => {
     setNewTodo(event.target.value);
   };
 
-  const submitHandler = () => {
+  const submitHandler = (event) => {
+    event.preventDefault()
     const todo = {
       id: uuid(),
       description: newTodo,

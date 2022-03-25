@@ -21,7 +21,8 @@ const EditTodo = (props) => {
     setSelectedTodo(selectedTodo);
   }, [currentId, todos]);
 
-  const submitHandler = () => {
+  const submitHandler = (event) => {
+    event.preventDefault()
     editTodo(selectedTodo);
     history.push("/");
   };
