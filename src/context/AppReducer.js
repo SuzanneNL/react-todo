@@ -6,6 +6,10 @@ const AppReducer = (state, action) => {
           return todo.id !== action.payload;
         }),
       };
+    case "ADD_TODO":
+      return {
+        todos: [action.payload, ...state.todos],
+      };
     default:
       return state;
   }
