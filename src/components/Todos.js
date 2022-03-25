@@ -1,9 +1,14 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 
 import Heading from "./layout/Heading";
 
+import { GlobalContext } from "../context/GlobalState";
+
 const Todos = () => {
+  const { todos } = useContext(GlobalContext);
+  console.log(todos);
+
   return (
     <div className="container">
       <Heading />
