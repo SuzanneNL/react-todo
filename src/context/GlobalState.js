@@ -27,12 +27,20 @@ export const GlobalProvider = ({ children }) => {
     });
   };
 
+  const editTodo = (todo) => {
+    dispatch({
+      type: "EDIT_TODO",
+      payload: todo,
+    });
+  };
+
   return (
     <GlobalContext.Provider
       value={{
         todos: state.todos,
         deleteTodo,
         addTodo,
+        editTodo,
       }}
     >
       {children}

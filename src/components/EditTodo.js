@@ -1,19 +1,51 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React, { useContext, useState, useEffect } from "react";
+import { Link, useHistory } from "react-router-dom";
 
-import Card from './layout/Card'
+import Card from "./layout/Card";
 
-const EditTodo = () => {
+import { GlobalContext } from "../context/GlobalState";
+
+const EditTodo = (props) => {
+  const [selectedTodo, setSelectedTodo] = useState({
+    id: "",
+    description: "",
+  });
+  const { todos, editTodo } = useContext(GlobalContext);
+  const history = useHistory();
+  const currentId = props.match.params.id;
+
+  useEffect(() => {
+    const todoId = currentId;
+
+    const selectedTodo = todos.find((todo) => todo.id === todoId);
+    setSelectedTodo(selectedTodo);
+  }, [currentId, todos]);
+
+  const submitHandler = () => {
+    editTodo(selectedTodo);
+    history.push("/");
+  };
+
+  const getselectedTodo = (event) => {
+    setSelectedTodo({
+      ...selectedTodo,
+      [event.target.name]: event.target.value,
+    });
+  };
+
   return (
     <Card>
-      <form>
+      <form onSubmit={submitHandler}>
         <div class="form-group">
           <label for="todo">Edit todo</label>
           <input
             type="text"
             class="form-control"
             id="todo"
-            placeholder="Enter your todo"
+            name="description"
+            value={selectedTodo.description}
+            onChange={getselectedTodo}
+            placeholder="Edit your todo"
           />
         </div>
         <button type="submit" class="btn btn-primary">
@@ -24,7 +56,7 @@ const EditTodo = () => {
         </Link>
       </form>
     </Card>
-  )
-}
+  );
+};
 
-export default EditTodo
+export default EditTodo;
