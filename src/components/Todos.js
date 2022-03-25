@@ -15,7 +15,7 @@ const Todos = () => {
         {todos.length > 0 && (
           <ul className="list-group">
             {todos.map((todo) => (
-              <li className="list-group-item">
+              <li className="list-group-item" key={todo.id}>
                 <strong>{todo.description}</strong>
                 <br></br>
                 <Link
