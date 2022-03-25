@@ -3,8 +3,8 @@ import AppReducer from "./AppReducer";
 
 const initialState = {
   todos: [
-    {id: 1, todo: "Complete project" },
-    {id: 2, todo: "Learn React" },
+    {id: 1, description: "Complete project" },
+    {id: 2, description: "Learn React" },
   ],
 };
 
