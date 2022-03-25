@@ -6,8 +6,7 @@ import Heading from "./layout/Heading";
 import { GlobalContext } from "../context/GlobalState";
 
 const Todos = () => {
-  const { todos } = useContext(GlobalContext);
-  console.log(todos);
+  const { todos, deleteTodo } = useContext(GlobalContext);
 
   return (
     <div className="container">
@@ -21,7 +20,12 @@ const Todos = () => {
               <Link to={`/edit/${todo.id}`} className="btn btn-sm btn-warning">
                 Edit
               </Link>
-              <button className="btn btn-sm btn-danger">Delete</button>
+              <button
+                onClick={() => deleteTodo(todo.id)}
+                className="btn btn-sm btn-danger"
+              >
+                Delete
+              </button>
             </li>
           ))}
         </ul>
